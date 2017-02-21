@@ -12,7 +12,7 @@ using namespace std;
 \param [in] data The data set that will be searched
 \returns location of key if found or -1 if not found
 */
-int linearSearch(auto data, auto key);//prototype
+
 void InsertionSort(auto &data);
 
 
@@ -20,7 +20,7 @@ int main()
 {
   vector<string> inputs;
   string search_key, input;
-  int result;
+ 
 
    cout<<"Welcome to \"search it\". We first need some input data."<<endl;
    cout<<"We'll assume the inputs do not have any spaces."<<endl<<endl;
@@ -39,61 +39,37 @@ int main()
   if(inputs.size() == 0)//no input
   {
       cout<<endl<<"No input received, quiting..."<<endl<<endl;
-       exit(1);//nothing to do but quit program
+       exit(1);//nothing to do but quit programs
   }
  
-   cout<<endl<<"To end input type the #-character (followed by Enter)"<<endl<<endl;
-  cout<<"Enter a value to search for: ";
+  
+	InsertionSort(inputs);    
+for(size_t i=0; i < inputs.size(); i++){
+cout << inputs[i] << endl ;  
+}	
 
-
-   cin>>search_key;
- 
-    while(search_key != "#")//perform searches until sentinel entered
-    {
-        
-	InsertionSort(inputs);
-	result = linearSearch(inputs,search_key);
-
-        cout<<"  '"<<search_key<<"' was ";
-
-        if (result == -1)
-          cout<<"not found";
-        else
-          cout<<"found at index "<<result;
-
-
-        cout<<endl<<endl<<"Enter a value to search for: ";
-        cin>>search_key; 
-    }
-
-   cout<<endl<<"Program \"search it\" is now finished."<<endl<<endl;
-
-    return 0;
 }
 
-int linearSearch(auto data,auto key){
-for(int i=0;i < data.size();i++){
-if(data[i] == key) {
-return i;
-}//endif
-}//endfor 
-return -1; //not found
-}
+
 
 void InsertionSort(auto &data){
 int c = 0;
-for(int i=0;i < data.size()-1;i++){
-c++;
-if(c == 20000){
-cout << i << "passes completed"<< endl;
-c = 0;
-}
+for(size_t i=0;i < data.size()-1;i++){
+
 int j = i +1; // inserting element
 
-while(j > 0 and data[j-1] > data[j]){
+while(j > 0 && data[j-1] > data[j]){
 swap(data[j],data[j-1]);
 j=j-1;
 		}
-	}
+	
+c++;
+if(c == 20000){
+cout << i + 1 << " passes completed"<< endl;
+c = 0;
+i-1;
+}
+}
+
 }
 
