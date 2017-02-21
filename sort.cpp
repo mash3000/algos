@@ -72,7 +72,7 @@ int main()
 }
 
 int linearSearch(auto data,auto key){
-for(int i=0;i<data.size();i++){
+for(int i=0;i < data.size();i++){
 if(data[i] == key) {
 return i;
 }//endif
@@ -81,7 +81,13 @@ return -1; //not found
 }
 
 void InsertionSort(auto &data){
+int c = 0;
 for(int i=0;i < data.size()-1;i++){
+c++;
+if(c == 20000){
+cout << i << "passes completed"<< endl;
+c = 0;
+}
 int j = i +1; // inserting element
 
 while(j > 0 and data[j-1] > data[j]){
